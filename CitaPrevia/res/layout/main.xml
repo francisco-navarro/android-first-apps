@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent" android:background="@color/fondo" android:orientation="vertical">
+    <ImageView android:src="@drawable/sescam" android:layout_height="wrap_content" android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_gravity="center"></ImageView>
+    <TextView android:id="@+id/textView2" android:layout_height="wrap_content" android:text="@string/principal.intro1" android:layout_width="wrap_content" ></TextView>
+    <TextView android:id="@+id/textView3" android:layout_height="wrap_content" android:paddingLeft="10px" android:layout_width="wrap_content" android:text="@string/principal.intro2" ></TextView>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:paddingLeft="10px" android:paddingRight="7px">
+        <EditText android:layout_height="wrap_content" android:text="" android:layout_width="fill_parent" android:id="@+id/editCIP"></EditText>
+    </LinearLayout>
+    <LinearLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:id="@+id/linearLayout99">
+    	<Button android:text="Enviar" android:layout_height="wrap_content" android:id="@+id/button1" android:layout_width="fill_parent" android:layout_gravity="bottom"></Button>
+    </LinearLayout>
+	
+</LinearLayout>
