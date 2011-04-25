@@ -50,10 +50,13 @@ public class Almacenamiento {
 	}
 
 	public void guardar(String CIP) {
-		
+		String ruta=Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator+ Constants.APP_RUTA_ALMACENAMIENTO;
 		try{
+			File dir=new File(ruta);
+			if(!dir.exists())
+				dir.mkdir();
 			File file = new File(
-					Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator+ Constants.APP_RUTA_ALMACENAMIENTO);
+					ruta+Constants.APP_FICHERO_ALMACENAMIENTO);
 			if(!file.exists())
 				file.createNewFile();
 			
@@ -69,9 +72,12 @@ public class Almacenamiento {
 	
 	public String leer() {
 		if(permisoLectura){
+			
+			String ruta=Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator+ Constants.APP_RUTA_ALMACENAMIENTO;
+			
 			try{
 				File file = new File(
-						Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator+ Constants.APP_RUTA_ALMACENAMIENTO);
+						ruta+Constants.APP_FICHERO_ALMACENAMIENTO);
 				if(!file.exists())
 					return "";
 

@@ -1,6 +1,7 @@
 package pakonat.citaprevia.main.threads;
 
 import pakonat.citaprevia.NuevaCita;
+import pakonat.citaprevia.NuevaCitaConfirmar;
 import pakonat.citaprevia.NuevaCitaHora;
 import pakonat.citaprevia.html.HtmlParser;
 import pakonat.citaprevia.html.beans.FechaCita;
@@ -55,12 +56,21 @@ public class NuevaCitaHoraConfirmarThread extends Thread{
 		for(int i=0;i<entrada.length;i++) {
 			if(entrada[i].startsWith("<p")){
 				if(entrada[i].contains(TEXTO_CONFIRMAR)){
-					infoCita.setMsg(html.textoLinea(i));
+					infoCita.setMsg(HtmlParser.procesaHtml(html.textoLinea(i)));
+					for(;i<entrada.length;i++){
+						if(!html.linea(i+1).startsWith("</p>") && html.linea(i+1).length()>1)
+							break;
+					}
+					String[] info=html.textoLinea(i+1).split(" ");
+					infoCita.setHora(info[4]);
+					infoCita.setDia(info[0]);
+					infoCita.setMsg(infoCita.getMsg()+" "+html.textoLinea(i+1));
+					break;
 				}
 			}
 		}
-			
-		mHandler.post(NuevaCitaHora.mUpdateResults);
+		NuevaCitaConfirmar.setInfoCita(infoCita);
+		mHandler.post(NuevaCitaConfirmar.mUpdateResults);
 	}
 	
 }

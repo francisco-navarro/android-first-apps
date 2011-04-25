@@ -24,7 +24,7 @@ public class FechaCita implements java.io.Serializable{
 	}
 	
 	public String getInformacionCita() {
-		return HtmlParser.procesaHtml(informacionCita);
+		return HtmlParser.procesaHtml(informacionCita).replaceAll("\t", "");
 	}
 
 	public void setInformacionCita(String info) {

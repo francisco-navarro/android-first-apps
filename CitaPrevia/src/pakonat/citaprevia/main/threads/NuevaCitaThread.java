@@ -36,7 +36,7 @@ public class NuevaCitaThread extends Thread{
 		}
 		
 		PakoNetUtils.getAuthenticator(au);
-		entrada=PakoNetUtils.nuevaConexionHttps(Constants.RUTA_NUEVA_CITA,"	https://sescam.jccm.es/web1/CitaPreviaInitial.do").toString().split("\n");
+		entrada=PakoNetUtils.nuevaConexionHttps(Constants.RUTA_NUEVA_CITA,"https://sescam.jccm.es/web1/CitaPreviaInitial.do").toString().split("\n");
 		for(int i=0;i<entrada.length;i++){
 			String lin=entrada[i];
 			if(lin!=null && !lin.equals(""))

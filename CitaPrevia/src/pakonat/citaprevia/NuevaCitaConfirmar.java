@@ -24,7 +24,7 @@ public class NuevaCitaConfirmar extends ActividadMenu {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); 
-        setContentView(R.layout.nueva_cita_hora);
+        setContentView(R.layout.nueva_cita_confirmar);
         
         inicializaObjetos();
         
@@ -35,7 +35,7 @@ public class NuevaCitaConfirmar extends ActividadMenu {
 
 	private void inicializaObjetos() {
 		
-		textoInfo = (TextView) findViewById(R.id.textViewInfoCita);
+		textoInfo = (TextView) findViewById(R.id.textViewInfoCitaTerminar);
     	loading=(ProgressBar) findViewById(R.id.cargandoNuevaCita);
     	capaLoading=(LinearLayout) findViewById(R.id.linearLayout2);
 		
@@ -43,16 +43,16 @@ public class NuevaCitaConfirmar extends ActividadMenu {
 	
 	 public static final Runnable mUpdateResults = new Runnable() {
 	        public void run() {
+	        	textoInfo.setText(infoCita.getMsg());
 	        	//Ocultar la barra de progreso
 	        	loading.setVisibility(View.INVISIBLE);
-	        	capaLoading.setVisibility(View.INVISIBLE);        	
 	        	//Mostar los datos
-	        	textoInfo.setText(infoCita.getMsg()+" "+infoCita.getDia()+" "+infoCita.getHora());
+	        	
 	        }      	        	
 	 };
 
 	public void clickContinuar(View v){
-		startActivity(new Intent(this,NuevaCitaTerminar.class));
+		startActivity(Principal.intentLogin);
 	}
 	
 	public static Integer getIdCita(){
