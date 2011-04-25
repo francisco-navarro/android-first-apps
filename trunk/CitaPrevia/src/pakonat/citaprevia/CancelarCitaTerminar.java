@@ -1,5 +1,9 @@
 package pakonat.citaprevia;
 
-public class CancelarCitaTerminar {
 
+import pakonat.citaprevia.utils.ActividadMenu;
+
+public class CancelarCitaTerminar extends ActividadMenu {
+	
+	
 }

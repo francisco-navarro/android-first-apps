@@ -8,7 +8,8 @@
     <string name="principal.intro2">De su tarjeta sanitaria, introduzca el CIP (Codigo de Identificacion de Paciente). </string>
     <string name="principal.elija.operacion">Elija la operación que quiera realizar </string>
     
-     <string name="boton.continuar">Continuar</string>
+    <string name="boton.continuar">Continuar</string>
+    <string name="boton.finalizar">Finalizar</string>
     
     
     

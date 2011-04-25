@@ -6,7 +6,8 @@ public class Constants {
 	
 	//CONSTANTES GENERALES DE LA APLICACION
 	public static String THIS_YEAR="2011";
-	public static String APP_RUTA_ALMACENAMIENTO=".CitaPrevia"+File.separator+"settingsCitaPrevia.txt";
+	public static String APP_RUTA_ALMACENAMIENTO=".CitaPrevia"+File.separator;
+	public static String APP_FICHERO_ALMACENAMIENTO="settingsCitaPrevia.txt";
 	
 	
 	//HTML_CONSTANTS
