@@ -262,6 +262,97 @@ public class H1listar {
 </html>
 
 */
-	 
-
+	
+	public static final String html="<h3>LISTA DE CITAS PENDIENTES</h3>"+
+	"<form name=\"CitaPreviaForm\" method=\"post\" action=\"/web1/CitaPreviaL.do\">"+
+	"	<input type=\"hidden\" name=\"operacion\" value=\"listaCita\" id=\"operacion\" />"+
+	"	   <p></p>"+
+	"		"+
+	"		<p>En el siguiente listado podr&aacute; comprobar las citas que tiene pendientes.<br/>Si desea eliminar alguna de ellas marque la casilla que se encuentra a lado y pulse el bot&oacute;n Eliminar</p>"+
+	"	     	<table class=\"expand\">"+
+	
+	"	   		<tr>"+
+	"	   			<th>Nombre del m&eacute;dico</th>"+
+	"	   			<th>Tipo</th>"+
+	"	   			<th>D&iacute;a</th>"+
+	"	   			<th>Hora</th>"+
+	"	   			<th></th>"+
+	
+	"	   		</tr>"+
+	"	   		"+
+	"	   		<tr>"+
+	"	   			<td>"+
+	"	   				"+
+	"	   				Lopez Abril, Juan"+
+	"	   				"+
+	"	   			</td>"+
+	"	   			<td>"+
+	"	   				"+
+	"	   				"+
+	"	   				Demanda por enfermedad"+
+	"	   				"+
+	"	   				"+
+	"	   				"+
+	"	   				"+
+	"	   			</td>"+
+	"	   			<td>"+
+	"	   				"+
+	"	   				26/04/2011"+
+	"	   				"+
+	"	   			</td>"+
+	
+	"	   			<td>"+
+	"	   				"+
+	"	   				18:16"+
+	"	   				"+
+	"	   			</td>"+
+	"	   			<td>"+
+	"	   				"+
+	"	   				"+
+	"	   				<input type=\"checkbox\" name=\"cita\" value=\"359577387\"  />"+
+	"	   				"+
+	"	   				"+
+	"	   			</td>"+
+	"	   		</tr>"+
+	"	   		"+
+	"	   		<tr>"+
+	"	   			<td>"+
+	
+	"	   				"+
+	"	   				Lopez Abril, Juan"+
+	"	   				"+
+	"	   			</td>"+
+	"	   			<td>"+
+	"	   				"+
+	"	   				"+
+	"	   				Demanda por enfermedad"+
+	"	   				"+
+	"	   				"+
+	"	   				"+
+	"	   				"+
+	"	   			</td>"+
+	"	   			<td>"+
+	"	   				"+
+	"	   				29/04/2011"+
+	"	   				"+
+	"	   			</td>"+
+	"	   			<td>"+
+	"	   				"+
+	"	   				09:21"+
+	"	   				"+
+	"	   			</td>"+
+	
+	"	   			<td>"+
+	"	   				"+
+	"	   				"+
+	"	   				<input type=\"checkbox\" name=\"cita\" value=\"359577423\"  />"+
+	"	   				"+
+	"	   				"+
+	"	   			</td>"+
+	"	   		</tr>"+
+	"	   		"+
+	"	   	</table>"+
+	"	   	<br/>"+
+	
+	"		</form>";
 }
