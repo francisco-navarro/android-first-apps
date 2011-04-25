@@ -16,6 +16,7 @@ public class HtmlParser {
 	private final String _TR="</tr";
 	private final String TD="<td";
 	private final String _TD="</td";
+	private final String CHECK="<input type=\"checkbox\" name=\"cita\" value=\"";
 	
 	String[] html;
 
@@ -81,9 +82,12 @@ public class HtmlParser {
 					}else if(html[i].startsWith(TD)){
 						for(;i<html.length;i++){
 							html[i]=html[i].replaceAll("\t", "").replaceAll("  ", "");
+							if(html[i].startsWith(CHECK)){
+								linea+=";"+html[i].replaceAll(CHECK, "").split("\"")[0];
+							}
 							linea+=html[i].replaceAll(REGEX_ELIMINA_HTML,"");
 							if(html[i].startsWith(_TR)){
-								linea.replaceAll("  ",";");
+								linea=linea.replaceAll("  ",";");
 								lista.add(linea);
 								break;
 							}

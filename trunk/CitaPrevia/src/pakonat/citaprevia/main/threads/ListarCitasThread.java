@@ -39,9 +39,18 @@ public class ListarCitasThread extends Thread{
 		}
 		
 		
-		HtmlParser parser=new HtmlParser(entrada);
+		HtmlParser parser=new HtmlParser(entrada);		
+		String[] lista=parser.extraerFormulario();
 		
-		parser.extraerFormulario();
+		for(String linea:lista){
+			String[] inf=linea.split(";")[2].split(" ");
+			InfoCita info = new InfoCita();
+			info.setDia(inf[0]);
+			info.setHora(inf[1]);
+			info.setId(new Integer(linea.split(";")[4]));
+			listaCitas.add(info);
+		}
+		
 		mHandler.post(CancelarCita.mUpdateResults);
 		
 	}
