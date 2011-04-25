@@ -1,7 +1,9 @@
 package pakonat.citaprevia;
 
+import pakonat.citaprevia.main.threads.ListarCitasThread;
 import pakonat.citaprevia.utils.ActividadMenu;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -17,6 +19,9 @@ public class CancelarCita extends ActividadMenu {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cancelar_cita);
         inicializaObjetos();
+        
+        final Handler mHandler = new Handler();
+        new ListarCitasThread(mHandler).start();
     }
     
 	private void inicializaObjetos() {

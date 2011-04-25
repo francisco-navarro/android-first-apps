@@ -9,10 +9,17 @@ import pakonat.citaprevia.utils.Constants;
 public class HtmlParser {
 	
 	private final String OPTION="<option";
+	private final String FORM="<form";
+	private final String _FORM="</form";
+	private final String TABLE="<table";
+	private final String TR="<tr";
+	private final String _TR="</tr";
+	private final String TD="<td";
+	private final String _TD="</td";
 	
 	String[] html;
 
-	private static final String REGEX_ELIMINA_HTML="\\<[A-z =\"0-9:]*>";
+	private static final String REGEX_ELIMINA_HTML="\\<[A-z =\"0-9:/]*>";
 	
 	public HtmlParser(String[] entrada){
 		this.html=entrada;
@@ -55,6 +62,42 @@ public class HtmlParser {
 		s=s.replaceAll("&uacute;", "ú");
 		
 		return s;
+	}
+	
+	public  String[] extraerFormulario(){
+		ArrayList<String> lista=new ArrayList<String>();
+
+		for(int i=0;i<html.length;i++){
+			if(html[i].startsWith(FORM)){
+				String linea="";
+
+				for(;i<html.length;i++){
+					html[i]=html[i].replaceAll("\t", "");
+					if(html[i].startsWith(TR)){
+
+						linea="";
+					}else if(html[i].startsWith(TR)){
+						
+					}else if(html[i].startsWith(TD)){
+						for(;i<html.length;i++){
+							html[i]=html[i].replaceAll("\t", "").replaceAll("  ", "");
+							linea+=html[i].replaceAll(REGEX_ELIMINA_HTML,"");
+							if(html[i].startsWith(_TR)){
+								linea.replaceAll("  ",";");
+								lista.add(linea);
+								break;
+							}
+						}
+						
+					}else if(html[i].startsWith(_FORM)){							
+						break;
+					}				
+				}
+			}
+
+
+		}
+		return  lista.toArray(new String[0]);
 	}
 
 }
