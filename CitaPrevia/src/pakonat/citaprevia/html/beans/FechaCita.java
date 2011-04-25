@@ -2,6 +2,7 @@ package pakonat.citaprevia.html.beans;
 
 import java.util.ArrayList;
 
+import pakonat.citaprevia.html.HtmlParser;
 import pakonat.citaprevia.utils.Constants;
 
 public class FechaCita implements java.io.Serializable{
@@ -23,7 +24,7 @@ public class FechaCita implements java.io.Serializable{
 	}
 	
 	public String getInformacionCita() {
-		return informacionCita;
+		return HtmlParser.procesaHtml(informacionCita);
 	}
 
 	public void setInformacionCita(String info) {
