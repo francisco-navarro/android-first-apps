@@ -15,6 +15,7 @@ public class NuevaCitaHora extends ActividadMenu {
 	private static LinearLayout capaLoading;
 	private static HoraCita hora;
 	
+	
 	static Spinner comboHoras;
 	static ArrayAdapter<String> aa;
 	
@@ -51,6 +52,10 @@ public class NuevaCitaHora extends ActividadMenu {
 
     public void clickContinuar(View v){
     	
-    	
+    	startActivity(new Intent(this,NuevaCitaConfirmar.class));
+    }
+    
+    public static String getHora(){
+    	return comboHoras.getSelectedItem().toString();
     }
 }

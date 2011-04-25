@@ -41,7 +41,7 @@ public class NuevaCitaHoraThread extends Thread{
 			entrada=H3hora.html.replaceAll("<", "\n<").split("\n");
 			
 		}else{	
-			
+			//Enviamos el dia y nos devuelve un listado de horas
 			entrada=PakoNetUtils.nuevaConexionHttps(Constants.RUTA_NUEVA_CITA_DIA.replaceAll("##DIA##", dia) ,Constants.RUTA_NUEVA_CITA).toString().replaceAll("<", "\n<").split("\n");
 			
 		}

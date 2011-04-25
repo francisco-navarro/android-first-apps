@@ -4,6 +4,7 @@ import java.net.*;
 
 import android.content.Context;
 import android.os.Handler;
+import pakonat.citaprevia.main.threads.NuevaCitaHoraConfirmarThread;
 import pakonat.citaprevia.main.threads.NuevaCitaHoraThread;
 import pakonat.citaprevia.main.threads.NuevaCitaThread;
 import pakonat.citaprevia.utils.Constants;
@@ -13,7 +14,7 @@ public class Engine implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	public static boolean debugMode=false;
+	public static boolean debugMode=true;
 	
 
 	
@@ -60,6 +61,11 @@ public class Engine implements java.io.Serializable{
 
 
 		return result.toString();
+	}
+
+	public void doShowConfirmarCita(Handler mHandler, String hora) {
+		
+		new NuevaCitaHoraConfirmarThread(mHandler, hora).start();
 	}
 	
 	
