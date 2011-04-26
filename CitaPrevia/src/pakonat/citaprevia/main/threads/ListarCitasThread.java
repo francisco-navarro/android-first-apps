@@ -51,6 +51,7 @@ public class ListarCitasThread extends Thread{
 			listaCitas.add(info);
 		}
 		
+		CancelarCita.setListaCitas(listaCitas.toArray(new InfoCita[0]));
 		mHandler.post(CancelarCita.mUpdateResults);
 		
 	}
