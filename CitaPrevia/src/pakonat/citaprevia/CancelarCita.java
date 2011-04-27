@@ -85,6 +85,9 @@ public class CancelarCita extends ActividadMenu {
     
     public boolean onClickTerminar(View v){
     	
+    	if(listaCitas.length==0)
+    		return true;
+    	
     	//Sacamos primero el i de la cita
     	int i=mapaCitas.get(""+rg.getCheckedRadioButtonId()).getId();
     	
