@@ -11,11 +11,23 @@
        <ProgressBar android:layout_height="40px" android:layout_width="40px" android:id="@+id/cargandoNuevaCita" android:layout_gravity="center"></ProgressBar>    	    	
     </LinearLayout>
     
-    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:paddingTop="10px">
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:paddingTop="10px" android:paddingBottom="10px">
         <TextView android:text="Esta es una lista de las citas que tiene pendientes:" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     </LinearLayout>   
     
     <LinearLayout android:layout_width="fill_parent" android:id="@+id/capaInfo" android:layout_height="wrap_content">
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/capaNoCitas" android:layout_height="wrap_content" android:visibility="invisible">
+    	<TextView android:text="    No existen citas actualmente." android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/capaInfo" android:layout_height="fill_parent">
+        
+            <Button android:text="Cancelar cita" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_gravity="bottom"
+            	android:onClick="onClickTerminar"
+            ></Button>
+       
     </LinearLayout> 
     
 </LinearLayout>
