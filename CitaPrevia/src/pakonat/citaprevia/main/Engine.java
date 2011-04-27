@@ -16,7 +16,7 @@ public class Engine implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	public static boolean debugMode=true;
+	public static boolean debugMode=false;
 	
 
 	
