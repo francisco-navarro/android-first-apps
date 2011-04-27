@@ -1,4 +1,7 @@
-package com.pakonat.motor2d;
+package com.pakonat.motor2d.activities;
+
+import com.pakonat.motor2d.R;
+import com.pakonat.motor2d.R.layout;
 
 import android.app.Activity;
 import android.os.Bundle;
