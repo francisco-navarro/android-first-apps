@@ -9,29 +9,37 @@ public class Coord implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private int x,y;
+	public Float x,y;
 	
 	public int getX() {
-		return x;
+		return Math.round(x);
 	}
 
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
 	public int getY() {
-		return y;
+		return  Math.round(y);
 	}
 
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 	
-	public Coord(int x,int y){
-		this.x=x;
-		this.y=y;
+	public Coord(Float x, Float y) {
+		
+		this.x = x;
+		this.y = y;
 	}
 
-	
+	public Coord(int x,int y){
+		this.x=new Float(x);
+		this.y=new Float(y);
+	}
+
+	public String toString(){
+		return "("+x.toString()+","+y.toString()+")";
+	}
 
 }

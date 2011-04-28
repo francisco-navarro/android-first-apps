@@ -2,28 +2,28 @@ package com.pakonat.motor2d.beans;
 
 import java.io.Serializable;
 
-public class Vector implements Serializable{
+public class Momento implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private int Fuerza;
+	public Float Fuerza;
 	
 	private Coord coord;
 
-	public Vector(int fuerza, Coord coord) {
+	public Momento(Float fuerza, Coord coord) {
 		super();
 		Fuerza = fuerza;
 		this.coord = coord;
 	}
 
-	public int getFuerza() {
+	public Float getFuerza() {
 		return Fuerza;
 	}
 
-	public void setFuerza(int fuerza) {
+	public void setFuerza(Float fuerza) {
 		Fuerza = fuerza;
 	}
 

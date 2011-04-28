@@ -2,8 +2,10 @@ package com.pakonat.motor2d.activities;
 
 import com.pakonat.motor2d.R;
 import com.pakonat.motor2d.R.layout;
+import com.pakonat.motor2d.beans.Coord;
 import com.pakonat.motor2d.colisions.objects.CustomDrawableView;
 import com.pakonat.motor2d.colisions.objects.ObjetoPlastico;
+import com.pakonat.motor2d.colisions.objects.Suelo;
 import com.pakonat.motor2d.physic.PhysicObjectDrawable;
 
 import android.app.Activity;
@@ -30,16 +32,22 @@ public class MainActivity extends Activity {
         mLinearLayout = new LinearLayout(this);
         mLinearLayout.setBackgroundColor(R.color.blanco);
         
-        ImageView i = new ImageView(this);
+        
 
         /*// Instantiate an ImageView and define its properties
-        
+        ImageView i = new ImageView(this);
         i.setImageResource(R.drawable.bola);
         i.setAdjustViewBounds(true); // set the ImageView bounds to match the Drawable's dimensions
         i.setLayoutParams(new Gallery.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        */
+        
         // Add the ImageView to the layout and set the layout as the content view
         mLinearLayout.addView(i);
+        */
+        
+        //mLinearLayout.addView(new Suelo(this, new Coord(100, 10)));
+        
+       
+        
         mLinearLayout.addView(new ObjetoPlastico(this));
         
         setContentView(mLinearLayout);

@@ -7,6 +7,7 @@ import android.graphics.drawable.shapes.RectShape;
 
 import com.pakonat.motor2d.beans.Coord;
 import com.pakonat.motor2d.physic.PhysicObjectDrawable;
+import com.pakonat.motor2d.physic.functions.RectilineoAcelerado;
 
 /**
  * @author Pakonat
@@ -18,8 +19,11 @@ public class ObjetoPlastico extends PhysicObjectDrawable implements Colisionable
 	/**
 	 * Usamos esta variable para saber si invalidamos el objeto siempre que lo dibujamos
 	 */
-	private boolean autoInvalidate=false;
+	private boolean autoInvalidate=true;
 	
+	
+
+
 	private int width ;
 	private int height ;
 	
@@ -34,15 +38,16 @@ public class ObjetoPlastico extends PhysicObjectDrawable implements Colisionable
 		height = 50;
 		
 		//creamos la forma 
-		mDrawable = new ShapeDrawable(new RectShape());
-		mDrawable.setBounds(eje.getX(), eje.getY(), eje.getX() + width,eje.getY() + height);
+		mDrawable = new ShapeDrawable(new RectShape());		
 		mDrawable.getPaint().setColor(0xff74AC23);
 	}
 	
-    protected void onDraw(Canvas canvas) {
+    public void onDraw(Canvas canvas) {
     	
+    	super.onDraw(canvas);
     	//Primero calculo fisica y despues dibujo
     	
+    	mDrawable.setBounds(eje.getX(), eje.getY(), eje.getX() + width,eje.getY() + height);
         mDrawable.draw(canvas);
         
         if(autoInvalidate)
@@ -67,8 +72,19 @@ public class ObjetoPlastico extends PhysicObjectDrawable implements Colisionable
 	}
 	
 	
+	public void calculaFisica(){
+		super.calculaFisica();
+		//recalculamos la velocidad de la gravedad y la posicion del objeto 
+		eje.y+=RectilineoAcelerado.distancia(velocidadGravedad, gravedad, t);
+		velocidadGravedad=RectilineoAcelerado.velocidad(velocidadGravedad, gravedad, t);
+	}
 	
-	
-	
+	public boolean isAutoInvalidate() {
+		return autoInvalidate;
+	}
+
+	public void setAutoInvalidate(boolean autoInvalidate) {
+		this.autoInvalidate = autoInvalidate;
+	}
 
 }
