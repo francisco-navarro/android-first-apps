@@ -6,6 +6,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 
 import com.pakonat.motor2d.beans.Coord;
+import com.pakonat.motor2d.colisions.objects.interfaces.Colisionable;
 import com.pakonat.motor2d.physic.PhysicObjectDrawable;
 import com.pakonat.motor2d.physic.functions.RectilineoAcelerado;
 
@@ -13,26 +14,18 @@ import com.pakonat.motor2d.physic.functions.RectilineoAcelerado;
  * @author Pakonat
  *
  */
-public class ObjetoPlastico extends PhysicObjectDrawable implements Colisionable{
+public class ObjetoPlasticoConGravedad extends PhysicObjectDrawable{
 	
 	
-	/**
-	 * Usamos esta variable para saber si invalidamos el objeto siempre que lo dibujamos
-	 */
-	private boolean autoInvalidate=true;
-	
-	
-
 
 	private int width ;
 	private int height ;
 	
 	
 	
-	public ObjetoPlastico(Context context) {
-		super(context);	
-		//Creamos las coordenadas del eje
-		eje=new Coord(10, 10);
+	public ObjetoPlasticoConGravedad(Coord eje) {		
+		
+		this.eje=eje;
 		//Ponemos el tamaño, de momento por defecto
 		width = 30;
 		height = 50;
@@ -42,22 +35,25 @@ public class ObjetoPlastico extends PhysicObjectDrawable implements Colisionable
 		mDrawable.getPaint().setColor(0xff74AC23);
 	}
 	
-    public void onDraw(Canvas canvas) {
+	public ObjetoPlasticoConGravedad(int x,int y) {
+		this(new Coord(x, y));
+	}
+	
+    public void draw(Canvas canvas) {
     	
     	super.onDraw(canvas);
-    	//Primero calculo fisica y despues dibujo
+    	//Primero calculo fisica y despues dibujo, pero esto ya lo hace la super clase
     	
     	mDrawable.setBounds(eje.getX(), eje.getY(), eje.getX() + width,eje.getY() + height);
         mDrawable.draw(canvas);
         
-        if(autoInvalidate)
-        	invalidate();        
     }
 
 	
 	
 	@Override
 	public boolean colisiona(Coord c) {
+		
 		if(c.getX()>=eje.getX() && c.getX()<=width)
 			if(c.getY()>=eje.getY() && c.getY()<height)
 				return true;
@@ -72,19 +68,12 @@ public class ObjetoPlastico extends PhysicObjectDrawable implements Colisionable
 	}
 	
 	
-	public void calculaFisica(){
-		super.calculaFisica();
+	//Este metodo es obligatorio si queremos que tenga fisica
+	public void calculaFisica(){		
 		//recalculamos la velocidad de la gravedad y la posicion del objeto 
 		eje.y+=RectilineoAcelerado.distancia(velocidadGravedad, gravedad, t);
 		velocidadGravedad=RectilineoAcelerado.velocidad(velocidadGravedad, gravedad, t);
 	}
 	
-	public boolean isAutoInvalidate() {
-		return autoInvalidate;
-	}
-
-	public void setAutoInvalidate(boolean autoInvalidate) {
-		this.autoInvalidate = autoInvalidate;
-	}
-
+	
 }
