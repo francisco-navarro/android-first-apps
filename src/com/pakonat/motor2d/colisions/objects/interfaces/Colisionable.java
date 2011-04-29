@@ -1,4 +1,4 @@
-package com.pakonat.motor2d.colisions.objects;
+package com.pakonat.motor2d.colisions.objects.interfaces;
 
 
 import com.pakonat.motor2d.beans.Coord;

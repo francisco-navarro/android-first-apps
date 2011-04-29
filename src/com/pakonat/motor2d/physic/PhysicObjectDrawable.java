@@ -6,8 +6,9 @@ import android.graphics.drawable.ShapeDrawable;
 import android.view.View;
 
 import com.pakonat.motor2d.beans.Coord;
+import com.pakonat.motor2d.colisions.objects.interfaces.Colisionable;
 
-public  class PhysicObjectDrawable extends View{
+public abstract class PhysicObjectDrawable implements Colisionable{
 	
 	protected static Float gravedad = new Float(9.8);
 	protected static Float t=new Float(0.1);//Es el paso de tiempo en segundos, cuando mas alto mas a trompicones es la simulacion
@@ -18,8 +19,7 @@ public  class PhysicObjectDrawable extends View{
 	protected Float velocidadGravedad;//luego esta mierda se quita por una matriz de momentos
 	
 	
-	public PhysicObjectDrawable(Context context) {
-		super(context);
+	public PhysicObjectDrawable() {		
 		velocidadGravedad=new Float(0.0);
 	}
 	
@@ -27,8 +27,16 @@ public  class PhysicObjectDrawable extends View{
 		 calculaFisica();
 	 }
 	
-	public void calculaFisica(){
-		
+	public abstract void calculaFisica();
+	
+	public abstract void draw(Canvas canvas);
+
+	
+	public abstract boolean colisiona(Coord c);
+
+	
+	public Coord getEje() {		
+		return eje;
 	}
 	
 }
