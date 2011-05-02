@@ -2,7 +2,9 @@ package com.pakonat.motor2d.colisions.objects;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.graphics.drawable.shapes.RectShape;
 
 import com.pakonat.motor2d.beans.Coord;
@@ -27,12 +29,15 @@ public class ObjetoPlasticoConGravedad extends PhysicObjectDrawable{
 		
 		this.eje=eje;
 		//Ponemos el tamaño, de momento por defecto
-		width = 30;
-		height = 50;
+		width = 20;
+		height = 20;
 		
 		//creamos la forma 
-		mDrawable = new ShapeDrawable(new RectShape());		
+		mDrawable = new ShapeDrawable(new OvalShape());		
 		mDrawable.getPaint().setColor(0xff74AC23);
+		mDrawable.getPaint().setStyle(Paint.Style.STROKE);
+		mDrawable.getPaint().setStrokeWidth(3);
+
 	}
 	
 	public ObjetoPlasticoConGravedad(int x,int y) {
@@ -52,11 +57,12 @@ public class ObjetoPlasticoConGravedad extends PhysicObjectDrawable{
 	
 	
 	@Override
-	public boolean colisiona(Coord c) {
+	public boolean colisiona(Coord[] c1) {
 		
-		if(c.getX()>=eje.getX() && c.getX()<=width)
-			if(c.getY()>=eje.getY() && c.getY()<height)
-				return true;
+		for(Coord c : c1)
+			if(c.getX()>=eje.getX() && c.getX()<=width)
+				if(c.getY()>=eje.getY() && c.getY()<height)
+					return true;
 			
 		return false;
 	}
@@ -73,6 +79,15 @@ public class ObjetoPlasticoConGravedad extends PhysicObjectDrawable{
 		//recalculamos la velocidad de la gravedad y la posicion del objeto 
 		eje.y+=RectilineoAcelerado.distancia(velocidadGravedad, gravedad, t);
 		velocidadGravedad=RectilineoAcelerado.velocidad(velocidadGravedad, gravedad, t);
+	}
+
+	@Override
+	public Coord[] getColisionablePoints() {
+		
+		return  new Coord[]{
+			eje,
+			new Coord(eje.getX() + width, eje.getY() + height)
+		};
 	}
 	
 	

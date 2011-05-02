@@ -2,4 +2,9 @@
 <resources>
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">Motor2d</string>
+    
+    
+        <!-- Inicio menu contextual  -->
+    <string name="menu.salir">Salir</string>
+    <string name="menu.reset">Reset</string>
 </resources>

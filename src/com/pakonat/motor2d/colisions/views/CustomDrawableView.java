@@ -3,6 +3,8 @@ package com.pakonat.motor2d.colisions.views;
 import java.util.ArrayList;
 
 import com.pakonat.motor2d.beans.Coord;
+import com.pakonat.motor2d.colisions.objects.ObjetoMovimientoParabolico;
+import com.pakonat.motor2d.colisions.objects.ObjetoPlasticoConAceleracion;
 import com.pakonat.motor2d.colisions.objects.ObjetoPlasticoConGravedad;
 import com.pakonat.motor2d.colisions.objects.Suelo;
 import com.pakonat.motor2d.physic.PhysicObjectDrawable;
@@ -22,6 +24,7 @@ public class CustomDrawableView extends View {
     public CustomDrawableView(Context context) {
         super(context);
         
+        
         //En esta vista drawable tenemos un conjunto de formas del tipo PhysicObjectDrawable
         listaObjetos=new ArrayList<PhysicObjectDrawable>();
         
@@ -29,7 +32,7 @@ public class CustomDrawableView extends View {
         		new Suelo()
         		);
         listaObjetos.add(
-        		new ObjetoPlasticoConGravedad(10,10)
+        		new ObjetoMovimientoParabolico(new Coord(0,100),(float)65.0,45)
         		);
     }
 
@@ -38,7 +41,8 @@ public class CustomDrawableView extends View {
     	for(PhysicObjectDrawable objeto:listaObjetos)
     		for(PhysicObjectDrawable objetoEnColision:listaObjetos) 
     			//Como de momento esta solo dos objetos, no tiene importancia de orden ni de nada
-    			if(!objetoEnColision.equals(objeto) && objetoEnColision.colisiona(objeto.getEje()))
+    			if(!objetoEnColision.equals(objeto) && 
+    					objetoEnColision.colisiona(objeto.getColisionablePoints()))
     				autoinvalidate=false;
     	
     	for(PhysicObjectDrawable objeto:listaObjetos)

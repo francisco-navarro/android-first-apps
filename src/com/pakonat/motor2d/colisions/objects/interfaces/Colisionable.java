@@ -8,6 +8,8 @@ public interface Colisionable {
 	
 	public Coord getEje();
 	
-	public boolean colisiona(Coord c);
+	public boolean colisiona(Coord[] c);
+	
+	public Coord[] getColisionablePoints();
 
 }
