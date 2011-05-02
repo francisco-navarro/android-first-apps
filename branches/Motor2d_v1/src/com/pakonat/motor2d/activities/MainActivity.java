@@ -14,6 +14,9 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Gallery;
 import android.widget.ImageView;
@@ -33,17 +36,27 @@ public class MainActivity extends Activity {
     	
         super.onCreate(savedInstanceState);
         requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);
+        
+        getWindow().setFlags(
+        		512, 
+        		512);
+       
         guardaCoordenadas();
         
         mLinearLayout = new LinearLayout(this);
         mLinearLayout.setBackgroundColor(R.color.blanco);
-        
-   
-       
-        
         mLinearLayout.addView(new CustomDrawableView(this));
         
         setContentView(mLinearLayout);
+       
+    }
+    
+    private void reset(){
+    	  mLinearLayout = new LinearLayout(this);
+          mLinearLayout.setBackgroundColor(R.color.blanco);
+          mLinearLayout.addView(new CustomDrawableView(this));
+          
+          setContentView(mLinearLayout);
 
     }
 
@@ -53,9 +66,39 @@ public class MainActivity extends Activity {
 	
 		Display d = wm.getDefaultDisplay();
 
-		resX=d.getHeight();
-		resY=d.getWidth();
+		resX=d.getWidth();
+		resY=d.getHeight()-50;
 
 
 	}
+	
+	
+	
+	//--FUNCIONES DEL MENU
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	super.onCreateOptionsMenu(menu);
+    	MenuInflater preparamenu = getMenuInflater();
+    	preparamenu.inflate(R.menu.menu, menu);
+    	return true;
+    }
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		switch (item.getItemId()) {
+		case R.id.menuSalir:
+		
+				this.finish();
+			return true;
+			
+		case R.id.menuReset:
+			
+			reset();
+			return true;			
+			
+		}
+		
+		return false;
+	}
+	
 }

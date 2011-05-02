@@ -2,6 +2,7 @@ package com.pakonat.motor2d.colisions.objects;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 
@@ -15,21 +16,25 @@ public class Suelo extends PhysicObjectDrawable {
 	public Suelo() {
 		
 		this.eje=new Coord(0, MainActivity.resY-2);
+		
+		
 
 		mDrawable = new ShapeDrawable(new RectShape());		
 		mDrawable.getPaint().setColor(0xff74AC23);
-		
-		
-		
+		mDrawable.getPaint().setStyle(Paint.Style.STROKE);
 		mDrawable.setBounds(eje.getX(), eje.getY(), eje.getX() + MainActivity.resX,eje.getY() + 20);
         
+		
+	
+		
 	}
 
 	@Override
-	public boolean colisiona(Coord c) {
+	public boolean colisiona(Coord[] c1) {
 		
-		if(c.getY()>=eje.getY())
-				return true; //el suelo nunca colisiona?
+		for(Coord c : c1)
+			if(c.getY()>=eje.getY())
+					return true; //el suelo nunca colisiona?
 		return false;
 	}
 
@@ -43,6 +48,16 @@ public class Suelo extends PhysicObjectDrawable {
 	@Override
 	public void calculaFisica() {
 		//No hace nada la fisica, solo es suelo
+	}
+
+
+	@Override
+	public Coord[] getColisionablePoints() {
+		
+		
+		Coord[] result =new Coord[1];
+		result[0]=eje;
+		return result;
 	}
 	
 

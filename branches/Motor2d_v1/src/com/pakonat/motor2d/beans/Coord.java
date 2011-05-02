@@ -42,4 +42,10 @@ public class Coord implements Serializable{
 		return "("+x.toString()+","+y.toString()+")";
 	}
 
+	public Coord suma(Coord c1){
+		
+		this.x+=c1.x;
+		this.y+=c1.y;
+		return this;
+	}
 }

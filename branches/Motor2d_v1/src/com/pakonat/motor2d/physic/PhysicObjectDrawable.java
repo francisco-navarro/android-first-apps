@@ -11,7 +11,7 @@ import com.pakonat.motor2d.colisions.objects.interfaces.Colisionable;
 public abstract class PhysicObjectDrawable implements Colisionable{
 	
 	protected static Float gravedad = new Float(9.8);
-	protected static Float t=new Float(0.1);//Es el paso de tiempo en segundos, cuando mas alto mas a trompicones es la simulacion
+	protected static Float t=new Float(0.05);//Es el paso de tiempo en segundos, cuando mas alto mas a trompicones es la simulacion
 	
 	
 	protected ShapeDrawable mDrawable;
@@ -32,8 +32,9 @@ public abstract class PhysicObjectDrawable implements Colisionable{
 	public abstract void draw(Canvas canvas);
 
 	
-	public abstract boolean colisiona(Coord c);
+	public abstract boolean colisiona(Coord[] c);
 
+	public abstract Coord[] getColisionablePoints();
 	
 	public Coord getEje() {		
 		return eje;
