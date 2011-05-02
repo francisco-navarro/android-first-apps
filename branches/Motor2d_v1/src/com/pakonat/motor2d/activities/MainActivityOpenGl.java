@@ -1,48 +1,31 @@
 package com.pakonat.motor2d.activities;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+
+
+import com.pakonat.motor2d.openGl.OpenGLRenderer;
 
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
-public class MainActivityOpenGl extends Activity implements GLSurfaceView.Renderer {
+public class MainActivityOpenGl extends Activity  {
 	
 	GLSurfaceView mGLSurfaceView;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+	            WindowManager.LayoutParams.FLAG_FULLSCREEN); 
 
 		mGLSurfaceView = new GLSurfaceView(this);
-		mGLSurfaceView.setRenderer(this);
+		mGLSurfaceView.setRenderer(new OpenGLRenderer());
 		setContentView(mGLSurfaceView);
 		
 	}
 
 	
-	
-	//Metodos del render
-	
-	// Called when the surface is created or recreated.
-	public void onSurfaceChanged(GL10 arg0, int arg1, int arg2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	// Called to draw the current frame.
-	public void onDrawFrame(GL10 arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	// Called when the surface changed size.
-	public void onSurfaceCreated(GL10 arg0, EGLConfig arg1) {
-		// TODO Auto-generated method stub
-		
-	}
-	//FIN metodos del render
-
 }
